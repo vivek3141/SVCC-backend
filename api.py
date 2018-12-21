@@ -27,10 +27,22 @@ def get():
             c = conn.cursor()
             c.execute("SELECT * FROM names")
             ret = list(map(lambda x: str(x[0]), c.fetchall()))
-    except sqlite3.Error:
-        return "Error"
-    print()
+    except sqlite3.Error as c:
+        return str(c)
     return "<br>".join(ret)
+
+
+@app.route("/remove")
+def remove():
+    name = request.args.get("name")
+    try:
+        with sqlite3.connect('data.db') as conn:
+            c = conn.cursor()
+            c.execute("DELETE FROM NAMES where name='"+name+"'")
+            conn.commit()
+    except sqlite3.Error as c:
+        return str(c)
+    return "Success"
 
 
 if __name__ == "__main__":
