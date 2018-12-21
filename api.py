@@ -13,4 +13,3 @@ def submit():
         c = conn.cursor()
         c.execute("INSERT INTO names VALUES (?)", (name))
         conn.commit()
-   
