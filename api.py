@@ -38,11 +38,16 @@ def remove():
     try:
         with sqlite3.connect('data.db') as conn:
             c = conn.cursor()
-            c.execute("DELETE FROM NAMES where name='"+name+"'")
+            c.execute("DELETE FROM NAMES where name='" + name + "'")
             conn.commit()
     except sqlite3.Error as c:
         return str(c)
     return "Success"
+
+
+@app.route("wakemydyno.txt")
+def wake():
+    return ""
 
 
 if __name__ == "__main__":
