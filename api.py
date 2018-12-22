@@ -45,7 +45,7 @@ def remove():
     return "Success"
 
 
-@app.route("wakemydyno.txt")
+@app.route("/wakemydyno.txt")
 def wake():
     return ""
 
